@@ -1,0 +1,80 @@
+{
+    "name": "focsec",
+    "version": "1.0.0",
+    "label": "Focsec",
+    "description": "Focsec help to real-time threat intelligence API, powered by proprietary Artificial Intelligence algorithms,for detecting VPNs,Proxys,Bots, and TOR requests,enabling prompt identification of suspicious logins,fraud, and abuse.",
+    "publisher": "spryIQ.co",
+    "icon_small_name": "small.png",
+    "icon_large_name": "large.png",
+    "cs_compatible": true,
+    "cs_approved": false,
+    "category": "Threat Intelligence",
+    "help_online": "https://github.com/jitesh-spryiq/connector-focsec/blob/develop/docs/FocsecConnectorDoc.md",
+    "configuration": {
+        "fields": [
+            {
+                "title": "Server URL",
+                "type": "text",
+                "description": "Specify the URL of the focsec server to connect and perform automated operations.",
+                "tooltip": "Specify the URL of the focsec server to connect and perform automated operations.",
+                "name": "server_url",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": "",
+                "placeholder": "e.g: https://api.focsec.com or api.focsec.com"
+            },
+             {
+                "title": "API key",
+                "type": "password",
+                "description": "Specify the API key to access the endpoint to which you will connect and perform the automated operations.",
+                "tooltip": "Specify the API key to access the endpoint to which you will connect and perform the automated operations.",
+                "name": "api_key",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": "",
+                "placeholder": "e.g:yMlmghnnE9CApiAwLNHJFlN0VofZVnUnaaaHT"
+            }
+        ]
+    },
+    "operations": [
+        {
+            "title": "Get IP Details",
+            "operation": "get_ip_details",
+            "description": "Retrieves a list of IP indicators from focsec.",
+            "annotation": "get_ip_details",
+            "category": "investigation",
+            "parameters":[
+                {
+                    "title": "IP Address",
+                    "type": "text",
+                    "name": "ip_address",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "value": "",
+                    "placeholder": "e.g:1.1.1.1",
+                    "description": "Specify the IP address whose you want to retrieve from focsec.",
+                    "tooltip": "Specify the IP address whose you want to retrieve from focsec."
+                }],
+                "output_schema": [
+                    {
+                        "ip": "",
+                        "is_vpn": "" ,
+                        "is_proxy": "" ,
+                        "is_bot": "" ,
+                        "is_tor": "",
+                        "is_datacenter": "",
+                        "city": "",
+                        "country": "",
+                        "iso_code": "",
+                        "is_in_european_union": "",
+                        "flag": "",
+                        "autonomous_system_number": "",
+                        "autonomous_system_organization": ""
+                    }
+            ]
+        }
+    ]
+}

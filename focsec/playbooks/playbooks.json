@@ -1,0 +1,99 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "uuid": "36bdd832-6a0d-4522-bf65-8cf9d2f540d1",
+      "@type": "WorkflowCollection",
+      "name": "Sample - Focsec - 1.0.0",
+      "description": "Focsec help to real-time threat intelligence API, powered by proprietary Artificial Intelligence algorithms,for detecting VPNs,Proxys,Bots, and TOR requests,enabling prompt identification of suspicious logins,fraud, and abuse.",
+      "visible": true,
+      "image": null,
+      "recordTags": [
+        "Focsec"
+      ],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "uuid": "4e0e7642-e989-42ce-971e-58e394c6aeb9",
+          "collection": "/api/3/workflow_collections/36bdd832-6a0d-4522-bf65-8cf9d2f540d1",
+          "triggerLimit": null,
+          "description": "Retrieves a list of IP indicators from focsec.",
+          "name": "Get IP Details",
+          "tag": "#Focsec",
+          "recordTags": [
+            "Focsec"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/bdab8151-e3eb-4678-b2f7-1f030a40b480",
+          "steps": [
+            {
+              "uuid": "bdab8151-e3eb-4678-b2f7-1f030a40b480",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "1c7e8a32-6438-4b96-9a7d-8c87fc56f26c",
+                "title": "Focsec: Get IP Details",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "096b2486-9ec1-4e30-9a50-c32bd0e7725c",
+              "@type": "WorkflowStep",
+              "name": "Get IP Details",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Focsec",
+                "config": "''",
+                "params": {
+                  "ip_address": ""
+                },
+                "version": "1.0.0",
+                "connector": "focsec",
+                "operation": "get_ip_details",
+                "operationTitle": "Get IP Details",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "5ae6541d-ec3c-4d41-a4bd-5e758c894f8d",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get IP Details",
+              "sourceStep": "/api/3/workflow_steps/bdab8151-e3eb-4678-b2f7-1f030a40b480",
+              "targetStep": "/api/3/workflow_steps/096b2486-9ec1-4e30-9a50-c32bd0e7725c"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
